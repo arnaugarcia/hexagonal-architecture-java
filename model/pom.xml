@@ -11,6 +11,14 @@
     </parent>
 
     <artifactId>model</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-ddd</artifactId>
+            <version>1.9.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <!-- To create an "attached test JAR" to be able to use this module's test classes in other modules -->
     <build>

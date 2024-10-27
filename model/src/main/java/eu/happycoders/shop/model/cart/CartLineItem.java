@@ -14,12 +14,24 @@ import lombok.experimental.Accessors;
  */
 @Getter
 @Accessors(fluent = true)
-@RequiredArgsConstructor
 @AllArgsConstructor
 public class CartLineItem {
 
   private final Product product;
+  private final int discount;
   private int quantity;
+
+  public CartLineItem(Product product, int quantity) {
+    this.product = product;
+    this.quantity = quantity;
+    this.discount = 0;
+  }
+
+  public CartLineItem(Product product) {
+    this.product = product;
+    this.quantity = 1;
+    this.discount = 0;
+  }
 
   public void increaseQuantityBy(int augend, int itemsInStock)
       throws NotEnoughItemsInStockException {
@@ -36,6 +48,10 @@ public class CartLineItem {
     }
 
     this.quantity = newQuantity;
+  }
+
+  public boolean hasDiscount() {
+    return discount > 0;
   }
 
   public Money subTotal() {
